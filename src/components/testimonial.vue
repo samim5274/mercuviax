@@ -2,21 +2,28 @@
     <section class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div class="grid gap-6 lg:grid-cols-3">
             <div
-            v-for="item in testimonials"
-            :key="item.quote"
-            class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+                v-for="item in testimonials"
+                :key="item.quote"
+                class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.03]"
             >
-            <p class="text-lg leading-8 text-slate-200">“{{ item.quote }}”</p>
-            <div class="mt-6">
-                <p class="font-bold text-white">{{ item.author }}</p>
-                <p class="text-sm text-slate-400">{{ item.role }}</p>
-            </div>
+                <p class="text-lg leading-8 text-slate-700 dark:text-slate-200">
+                    “{{ item.quote }}”
+                </p>
+
+                <div class="mt-6">
+                    <p class="font-bold text-slate-900 dark:text-white">
+                        {{ item.author }}
+                    </p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">
+                        {{ item.role }}
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
-<script  setup>
+<script setup>
 const testimonials = [
   {
     quote: 'Mercuviax delivered a polished, reliable product experience with clear communication and strong technical direction.',
@@ -37,5 +44,4 @@ const testimonials = [
 </script>
 
 <style>
-
 </style>

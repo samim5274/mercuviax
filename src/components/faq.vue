@@ -1,24 +1,34 @@
 <template>
     <section id="faq" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div class="mb-12 max-w-2xl">
-            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-teal-300">FAQ</p>
-            <h2 class="text-3xl font-black sm:text-4xl">Common questions about Mercuviax</h2>
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-300">
+                FAQ
+            </p>
+
+            <h2 class="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
+                Common questions about Mercuviax
+            </h2>
         </div>
 
         <div class="space-y-4">
             <div
-            v-for="item in faqs"
-            :key="item.q"
-            class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6"
+                v-for="item in faqs"
+                :key="item.q"
+                class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.03]"
             >
-            <h3 class="text-lg font-bold text-white">{{ item.q }}</h3>
-            <p class="mt-3 leading-7 text-slate-400">{{ item.a }}</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                    {{ item.q }}
+                </h3>
+
+                <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
+                    {{ item.a }}
+                </p>
             </div>
         </div>
     </section>
 </template>
 
-<script  setup>
+<script setup>
 const faqs = [
   {
     q: 'What kind of software does Mercuviax build?',
@@ -36,5 +46,4 @@ const faqs = [
 </script>
 
 <style>
-
 </style>
