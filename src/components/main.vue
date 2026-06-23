@@ -24,6 +24,6 @@ import process from './process.vue'
 import contact from './contact.vue'
 import faq from './faq.vue'
 import footerSection from './footer.vue'
-import BackToTop from './BackToTop.vue'
 import missionVission from './missionVission.vue'
+import BackToTop from './BackToTop.vue'
 </script>

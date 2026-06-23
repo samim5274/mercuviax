@@ -1,180 +1,73 @@
 <template>
-    <section class="relative overflow-hidden bg-white text-slate-900 dark:bg-slate-950 dark:text-white">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,0.20),transparent_28%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.22),transparent_30%),linear-gradient(to_bottom,#020617,#0f172a,#020617)] dark:block hidden"/>
-        <div class="absolute inset-0 opacity-10 [background-image:linear-gradient(rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.06)_1px,transparent_1px)] [background-size:42px_42px] dark:hidden"/>
-        <div class="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:42px_42px] hidden dark:block"/>
+    <section class="relative min-h-screen overflow-hidden bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
+        <!-- Background Gradients & Grids -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,0.15),transparent_35%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),transparent_35%),linear-gradient(to_bottom,#020617,#0f172a,#020617)] dark:block hidden"/>
+        <div class="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(rgba(0,0,0,1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,1)_1px,transparent_1px)] [background-size:32px_32px] dark:hidden"/>
+        <div class="absolute inset-0 opacity-[0.05] [background-image:linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] [background-size:32px_32px] hidden dark:block"/>
 
-        <div class="relative mx-auto max-w-7xl px-6 py-6 lg:px-10">
-            <header class="flex items-center justify-between rounded-full border border-slate-200 bg-white/70 px-5 py-3 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
+        <!-- Sticky Header Container -->
+        <div class="sticky top-0 z-50 w-full px-4 py-4 transition-all duration-300 lg:px-10" :class="{ 'py-2': isScrolled }">
+            <header 
+                class="mx-auto max-w-7xl flex items-center justify-between rounded-full border border-slate-200/80 bg-white/70 px-6 py-3 shadow-sm backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-slate-900/40"
+                :class="{ 'shadow-md border-slate-300/50 dark:border-white/15 dark:bg-slate-900/70': isScrolled }"
+            >
+                <!-- Logo & Brand Info -->
                 <div class="flex items-center gap-3">
-                    <div
-                        class="relative flex h-14 w-14 items-center justify-center rounded-2xl
-                        bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-600
-                        shadow-[0_10px_30px_rgba(20,184,166,0.28)]
-                        ring-1 ring-white/20 overflow-hidden"
-                    >
+                    <div class="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-600 shadow-md ring-1 ring-white/20 overflow-hidden">
                         <div class="absolute inset-0 bg-white/10"></div>
-                        <div class="absolute -top-3 -right-3 h-8 w-8 rounded-full bg-cyan-200/30 blur-xl"></div>
-                        <div class="absolute -bottom-2 -left-2 h-8 w-8 rounded-full bg-blue-900/30 blur-xl"></div>
-
-                        <img
-                            :src="logo"
-                            alt="MercoviaX Logo"
-                            class="relative z-10 h-9 w-9 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
-                        />
+                        <img :src="logo" alt="MercoviaX Logo" class="relative z-10 h-6 w-6 object-contain" />
                     </div>
-
                     <div>
-                        <p class="text-xl font-bold tracking-wide">MercuviaX</p>
-                        <p class="text-xs text-slate-600 dark:text-slate-300">Smart Software for Modern Business</p>
+                        <p class="text-lg font-black tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent dark:from-white dark:to-slate-300">MercuviaX</p>
+                        <p class="hidden sm:block text-[10px] font-medium tracking-wide text-slate-500 uppercase dark:text-slate-400">Smart Software</p>
                     </div>
                 </div>
 
-                <nav class="hidden items-center gap-8 text-sm text-slate-600 dark:text-slate-300 lg:flex">
-                    <a href="#services" class="transition hover:text-black dark:hover:text-white">Services</a>
-                    <a href="#about" class="transition hover:text-black dark:hover:text-white">About</a>
-                    <a href="#portfolio" class="transition hover:text-black dark:hover:text-white">Portfolio</a>
-                    <a href="#process" class="transition hover:text-black dark:hover:text-white">Process</a>
-                    <a href="#faq" class="transition hover:text-black dark:hover:text-white">FAQ</a>
-                    <a href="#contact" class="transition hover:text-black dark:hover:text-white">Contact</a>
+                <!-- Navigation Links -->
+                <nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300 lg:flex">
+                    <a href="#services" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">Services<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
+                    <a href="#about" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">About<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
+                    <a href="#portfolio" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">Portfolio<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
+                    <a href="#process" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">Process<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
+                    <a href="#faq" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">FAQ<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
+                    <a href="#contact" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">Contact<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
                 </nav>
 
+                <!-- Action Actions -->
                 <div class="flex items-center gap-3">
                     <button
                         @click="toggleTheme"
-                        class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                        aria-label="Toggle Theme"
                     >
-                        <span v-if="isDark">☀</span>
-                        <span v-else>🌙</span>
+                        <span v-if="isDark" class="text-sm">☀️</span>
+                        <span v-else class="text-sm">🌙</span>
                     </button>
 
                     <a
                         href="#contact"
-                        class="hidden rounded-full border border-slate-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 md:inline-flex dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+                        class="hidden rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 md:inline-flex dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100"
                     >
                         Let’s Talk
                     </a>
                 </div>
             </header>
+        </div>
 
-            <div class="grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-28">
-                <div>
-                    <div class="mb-6 inline-flex rounded-full border border-teal-400/20 bg-teal-400/10 px-4 py-2 text-sm font-medium text-teal-600 dark:text-teal-300">
-                        Future-ready software company
-                    </div>
-
-                    <h1 class="max-w-3xl text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-                        Build powerful digital systems with
-                        <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                            Mercuviax
-                        </span>
-                    </h1>
-
-                    <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                        We design and develop modern software solutions that help businesses operate smarter, grow faster, and scale with confidence.
-                    </p>
-
-                    <div class="mt-8 flex flex-wrap gap-4">
-                        <a
-                            href="#contact"
-                            class="rounded-2xl bg-teal-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-xl shadow-teal-500/25 transition hover:-translate-y-0.5"
-                        >
-                            Start a Project
-                        </a>
-
-                        <a
-                            href="#services"
-                            class="rounded-2xl border border-slate-300 bg-white/70 px-6 py-3 text-sm font-semibold text-slate-800 backdrop-blur transition hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-                        >
-                            Explore Services
-                        </a>
-                    </div>
-
-                    <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                        <div
-                            v-for="item in stats"
-                            :key="item.label"
-                            class="rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
-                        >
-                            <p class="text-2xl font-black">{{ item.value }}</p>
-                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">{{ item.label }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute -left-6 top-10 h-24 w-24 rounded-full bg-teal-400/30 blur-3xl" />
-                    <div class="absolute -right-6 bottom-10 h-24 w-24 rounded-full bg-blue-500/30 blur-3xl" />
-
-                    <div class="relative rounded-[2rem] border border-slate-200 bg-white/70 p-5 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5 dark:shadow-cyan-950/40">
-                        <div class="rounded-[1.5rem] border border-slate-200 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
-                            <div class="mb-4 flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Business Intelligence</p>
-                                    <h3 class="text-xl font-bold">Mercuviax Dashboard</h3>
-                                </div>
-
-                                <div class="rounded-xl border border-teal-400/20 bg-teal-400/10 px-3 py-1 text-xs font-semibold text-teal-600 dark:text-teal-300">
-                                    Live System
-                                </div>
-                            </div>
-
-                            <div class="grid gap-4 md:grid-cols-2">
-                                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-950/70">
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Performance</p>
-                                    <div class="mt-4 h-32 rounded-2xl bg-gradient-to-br from-teal-400/20 via-cyan-400/10 to-transparent p-4">
-                                        <div class="flex h-full items-end gap-3">
-                                            <div
-                                                v-for="(height, index) in performanceBars"
-                                                :key="index"
-                                                class="w-8 rounded-t-xl"
-                                                :class="barColors[index]"
-                                                :style="{ height }"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-950/70">
-                                        <p class="text-sm text-slate-500 dark:text-slate-400">Core Services</p>
-                                        <div class="mt-4 space-y-3 text-sm">
-                                            <div class="rounded-xl bg-white px-3 py-3 shadow-sm dark:bg-white/5">Web Application Development</div>
-                                            <div class="rounded-xl bg-white px-3 py-3 shadow-sm dark:bg-white/5">Business Automation Systems</div>
-                                            <div class="rounded-xl bg-white px-3 py-3 shadow-sm dark:bg-white/5">Enterprise Platform Integration</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="rounded-2xl border border-teal-400/20 bg-gradient-to-r from-teal-400/15 to-blue-500/15 p-4">
-                                        <p class="text-sm text-slate-600 dark:text-slate-300">Reliable. Scalable. Professional.</p>
-                                        <p class="mt-2 text-2xl font-black">Software Built for Growth</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Main Hero Content -->
+        <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
+            <HeroSection />
         </div>
     </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import logo from '../assets/logo.ico'
-
-const stats = [
-  { value: '99%', label: 'Client-focused delivery' },
-  { value: '24/7', label: 'Support mindset' },
-  { value: '10+', label: 'Solution-ready modules' },
-  { value: 'Fast', label: 'Execution process' },
-]
-
-const performanceBars = ['38%', '52%', '68%', '86%']
-const barColors = ['bg-teal-300', 'bg-cyan-300', 'bg-sky-300', 'bg-blue-300']
-
+import HeroSection from './hero.vue'
 
 const isDark = ref(false)
+const isScrolled = ref(false)
 
 const setTheme = (theme) => {
     if (theme === 'dark') {
@@ -184,7 +77,6 @@ const setTheme = (theme) => {
         document.documentElement.classList.remove('dark')
         isDark.value = false
     }
-
     localStorage.setItem('theme', theme)
 }
 
@@ -192,14 +84,17 @@ const toggleTheme = () => {
     setTheme(isDark.value ? 'light' : 'dark')
 }
 
+const handleScroll = () => {
+    isScrolled.value = window.scrollY > 20
+}
+
 onMounted(() => {
     const savedTheme = localStorage.getItem('theme') || 'light'
     setTheme(savedTheme)
+    window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
 })
 </script>
-
-<style>
-html {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-</style>
