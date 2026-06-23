@@ -38,11 +38,23 @@
                         </p>
                     </div>
 
-                    <button
-                        class="mt-3 w-full rounded-2xl bg-slate-900 px-5 py-3 font-bold text-white transition hover:opacity-90 dark:bg-white dark:text-slate-950"
-                    >
-                        Book a Consultation
-                    </button>
+                    <div class="mt-4 flex flex-col sm:flex-row gap-3 w-full">
+                        <!-- Book a Consultation Button -->
+                        <button @click="callNow"
+                            class="flex-1 rounded-xl bg-slate-900 px-6 py-3.5 text-center font-semibold text-white tracking-wide transition-all duration-200 hover:bg-slate-800 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 dark:focus:ring-offset-slate-900"
+                        >
+                            Book a Consultation
+                        </button>
+                        
+                        <!-- WhatsApp Link Button -->
+                        <a href="https://wa.me/8801533021557"
+                            target="_blank"
+                            class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-center font-semibold text-slate-700 tracking-wide transition-all duration-200 hover:bg-slate-50 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
+                            <!-- WhatsApp Icon (Styled for perfect alignment) -->
+                            <i class="fa-brands fa-whatsapp text-xl text-green-500 dark:text-green-400"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,6 +62,9 @@
 </template>
 
 <script setup>
+const callNow = () => {
+    window.location.href = 'tel:+8801533021557';
+};
 </script>
 
 <style>
