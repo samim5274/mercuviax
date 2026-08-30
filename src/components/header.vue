@@ -15,7 +15,7 @@
                 <div class="flex items-center gap-3">
                     <div class="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-600 shadow-md ring-1 ring-white/20 overflow-hidden">
                         <div class="absolute inset-0 bg-white/10"></div>
-                        <img :src="logo" alt="MercoviaX Logo" class="relative z-10 h-6 w-6 object-contain" />
+                        <img :src="logo" alt="MercuviaX Logo" class="relative z-10 h-6 w-6 object-contain" />
                     </div>
                     <div>
                         <p class="text-lg font-black tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent dark:from-white dark:to-slate-300">MercuviaX</p>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Desktop Navigation Links -->
                 <nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300 lg:flex">
                     <a href="#services" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">Services<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
                     <a href="#about" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">About<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
@@ -33,7 +33,7 @@
                     <a href="#contact" class="relative py-1 transition hover:text-teal-500 dark:hover:text-teal-400 group">Contact<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span></a>
                 </nav>
 
-                <!-- Action Actions -->
+                <!-- Actions & Mobile Menu Toggle -->
                 <div class="flex items-center gap-3">
                     <button
                         @click="toggleTheme"
@@ -50,8 +50,47 @@
                     >
                         Let’s Talk
                     </a>
+
+                    <!-- Mobile Hamburger Button -->
+                    <button
+                        @click="isMobileMenuOpen = !isMobileMenuOpen"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 lg:hidden dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/10"
+                        aria-label="Toggle Mobile Menu"
+                    >
+                        <svg v-if="!isMobileMenuOpen" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg v-else class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             </header>
+
+            <!-- Mobile Navigation Dropdown -->
+            <transition
+                enter-active-class="transition duration-200 ease-out"
+                enter-from-class="opacity-0 -translate-y-2"
+                enter-to-class="opacity-100 translate-y-0"
+                leave-active-class="transition duration-150 ease-in"
+                leave-from-class="opacity-100 translate-y-0"
+                leave-to-class="opacity-0 -translate-y-2"
+            >
+                <nav 
+                    v-if="isMobileMenuOpen" 
+                    class="mx-auto mt-3 max-w-7xl rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-xl backdrop-blur-xl lg:hidden dark:border-white/10 dark:bg-slate-900/90"
+                >
+                    <div class="flex flex-col space-y-3 font-medium text-slate-700 dark:text-slate-200">
+                        <a href="#services" @click="isMobileMenuOpen = false" class="rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">Services</a>
+                        <a href="#about" @click="isMobileMenuOpen = false" class="rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">About</a>
+                        <a href="#portfolio" @click="isMobileMenuOpen = false" class="rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">Portfolio</a>
+                        <a href="#process" @click="isMobileMenuOpen = false" class="rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">Process</a>
+                        <a href="#faq" @click="isMobileMenuOpen = false" class="rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">FAQ</a>
+                        <a href="#contact" @click="isMobileMenuOpen = false" class="rounded-lg px-3 py-2 transition hover:bg-slate-100 dark:hover:bg-white/5">Contact</a>
+                        <a href="#contact" @click="isMobileMenuOpen = false" class="mt-2 text-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white dark:bg-white dark:text-slate-950">Let’s Talk</a>
+                    </div>
+                </nav>
+            </transition>
         </div>
 
         <!-- Main Hero Content -->
@@ -68,6 +107,7 @@ import HeroSection from './hero.vue'
 
 const isDark = ref(false)
 const isScrolled = ref(false)
+const isMobileMenuOpen = ref(false)
 
 const setTheme = (theme) => {
     if (theme === 'dark') {

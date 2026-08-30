@@ -151,6 +151,21 @@
                             <p class="text-base font-semibold break-all text-slate-900 dark:text-white mt-0.5">
                                 mercuviax@gmail.com
                             </p>
+                            <p class="text-base font-semibold break-all text-slate-900 dark:text-white mt-0.5">
+                                info@mercuviax.com
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400">
+                            <i class="fa-solid fa-location text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Email</p>
+                            <p class="text-base font-semibold break-all text-slate-900 dark:text-white mt-0.5">
+                                ka-153/3, Khilkhet, Dhaka-1230
+                            </p>
                         </div>
                     </div>
                 </div>

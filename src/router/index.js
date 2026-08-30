@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import Index from '../components/main.vue'
+import Index from '../components/main.vue';
 
 const routes = [
    { path: '/', component: Index, meta: {title: "Welcome to MercuviaX"} },
@@ -9,6 +9,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.afterEach((to) => {
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', 'PageView');
+  }
 });
 
 router.beforeEach((to, from, next) => {

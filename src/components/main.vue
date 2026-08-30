@@ -5,6 +5,7 @@
     <portfolio />
     <about />
     <testimonial />
+    <pricingSection />
     <process />
     <missionVission />
     <contact />
@@ -20,6 +21,7 @@ import headerSection from './header.vue'
 import portfolio from './portfolio.vue'
 import about from './about.vue'
 import testimonial from './testimonial.vue'
+import pricingSection from './pricing.vue'
 import process from './process.vue'
 import contact from './contact.vue'
 import faq from './faq.vue'
