@@ -59,7 +59,7 @@ const seconds = ref(0);
 let timer = null;
 
 // Target Date
-const targetDate = new Date('2026-09-15T23:59:59+06:00').getTime();
+const targetDate = new Date('2026-09-30T23:59:59+06:00').getTime();
 
 // Formatting single digits to double digits (e.g., 5 -> "05")
 const formatTime = (value) => String(value).padStart(2, '0');
